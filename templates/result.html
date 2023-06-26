@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container w-100 h-90">
+    <div class="cards-container-result">
+        <div class="card one-card" style="width: 35vw;">
+            <img src="{{url.image.url}}" class="card-img-top" alt="image">
+            <div class="text-center">
+                <a href="{{url.image.url}}" class="btn btn-primary my-5" download="image.jpg" onClick="alert('Thank you !')">Download</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

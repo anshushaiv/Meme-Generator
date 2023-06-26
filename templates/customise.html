@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col cards-container">
+            <div class="card one-card" style="width: 18rem;">
+                <img src="{{data.image.url}}" class="card-img-top" alt="image">
+                <div class="card-body text-center">
+                    <h5>Imaga preview</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="container">
+                <h5 class="text-center my-3 mb-3">ADD DATA</h5>
+                <form action="/generate/{{id}}/{{slug}}/" method="post" class="meme-generate-form">
+                    {% csrf_token %}
+                    {% comment %} <input type="hidden" name="id" value={{id}}>
+                    <input type="hidden" name="slug" value={{slug}}> {% endcomment %}
+                    <label for="">Top Caption</label><br>
+                    <input type="text" name="cap_1" id=""><br><br>
+                    <label for="">Middle Caption</label><br>
+                    <input type="text" name="cap_2" id=""><br><br>
+                    <label for="">Bottom Caption</label><br>
+                    <input type="text" name="cap_3" id=""><br><br>
+                    <label for="">Caption Color</label><br>
+                    <input type="color" name="color" id="" class='w-100'><br><br>
+                    <input type="submit" class="btn btn-primary" value="Generate"><br>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

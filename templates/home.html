@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Meme Generator
+{% endblock title %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+
+    <div class="col">
+      <div class="cards-container">
+        {% for img in data %}
+        <div class="card one-card" style="width: 40%;height: 70%;">
+          <img src="{{img.image.url}}" class="card-img-top" alt="image">
+          <div class="card-body text-center">
+            <a class="btn btn-primary" href="{% url 'customise' img.id "default" %}" >Select</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <h4 class="text-center my-3">OR</h4>
+    <div class="col my-3 d-flex align-items-center justify-content-center">
+      <div>
+        <p class="text-center">Upload a custom Image</p>
+        <form action="/upload/" class="upload-form" enctype="multipart/form-data" method="post">
+          {% csrf_token %}
+          <input type="file" name="image" id="uploaded-image"> <br><br>
+          <div class="text-center">
+            <input type="submit" value="Save" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock body %}
